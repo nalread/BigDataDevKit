@@ -10,9 +10,7 @@ fi
 test -e base-ssh/id_rsa ||  ssh-keygen -t rsa -f base-ssh/id_rsa -N '' 
 cp base-ssh/id_* devenv
 for i in \
-    base-java base-ssh base-hadoop hadoop \
-    zeppelin sparkjobserver  \
-    base-scala base-novnc devenv 
+    base-ssh zeppelin base-novnc devenv 
 do docker build -t bddk/$i $i || exit 1
 done
 if ! grep dropbox /etc/rc.d/rc.local >/dev/null
